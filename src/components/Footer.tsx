@@ -8,7 +8,7 @@ export default function Footer() {
           <img src="/logo.png" alt="DriveNext Logo" className="h-8 w-auto" />
         </div>
         
-        <div className="flex items-center gap-8 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-xs font-bold text-zinc-500 uppercase tracking-widest text-center">
           <a href="#" className="hover:text-primary transition-colors">Reviews</a>
           <a href="#" className="hover:text-primary transition-colors">Services</a>
           <a href="#" className="hover:text-primary transition-colors">Partners</a>

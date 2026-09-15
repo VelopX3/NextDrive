@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="bg-background min-h-screen">
       {/* Hero & Navbar */}
-      <div className="relative flex flex-col min-h-[600px] overflow-hidden">
+      <div className="relative flex flex-col min-h-[500px] md:min-h-[600px] lg:min-h-[700px] overflow-hidden">
         {/* Full Video Background */}
         <div className="absolute inset-0 w-full h-full">
           <video 
@@ -60,17 +60,17 @@ export default function Home() {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 lg:px-20 pt-32 pb-32 h-full flex flex-col justify-center">
+        <div className="relative z-10 container mx-auto px-4 lg:px-20 pt-28 md:pt-32 pb-24 md:pb-32 h-full flex flex-col justify-center mt-12 md:mt-0">
           <BadgeTag 
             label="Special Offer" 
             text="Get flat 20% off on your first booking!" 
-            className="mb-6 w-fit" 
+            className="mb-4 md:mb-6 w-fit" 
           />
-          <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg max-w-3xl">
+          <h1 className="font-bold text-white leading-[1.1] drop-shadow-lg max-w-3xl" style={{ fontSize: 'clamp(2.5rem, 5vw + 1rem, 4.5rem)' }}>
             Looking to rent a car<br />or motorbike in Guwahati?
           </h1>
-          <p className="text-white/90 mt-6 max-w-xl text-lg drop-shadow-md font-medium">
-            You can check available vehicles for your dates here.<br/>
+          <p className="text-white/90 mt-4 md:mt-6 max-w-xl text-base md:text-lg drop-shadow-md font-medium">
+            You can check available vehicles for your dates here.<br className="hidden md:block" />
             Please, choose Pick-up/Return date and time in the form.
           </p>
         </div>
@@ -82,15 +82,15 @@ export default function Home() {
       </div>
 
       {/* Floating Search Bar */}
-      <div className="relative z-20 container mx-auto px-4 -mt-10 mb-20 flex justify-center">
-        <div className="bg-white rounded-full shadow-[0_10px_40px_rgb(0,0,0,0.1)] p-2 md:p-3 flex flex-col md:flex-row items-center gap-4 md:gap-8 w-full max-w-5xl">
+      <div className="relative z-20 container mx-auto px-4 -mt-16 md:-mt-10 mb-16 md:mb-20 flex justify-center">
+        <div className="bg-white rounded-3xl md:rounded-full shadow-[0_10px_40px_rgb(0,0,0,0.1)] p-4 md:p-3 flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-8 w-full max-w-5xl">
           
-          <div className="flex items-center gap-3 px-6 flex-1 text-zinc-600">
-            <MapPin className="w-5 h-5 text-zinc-400" />
+          <div className="flex items-center gap-3 px-2 md:px-6 flex-1 text-zinc-600 w-full border-b md:border-b-0 md:border-r border-zinc-100 pb-3 md:pb-0">
+            <MapPin className="w-5 h-5 shrink-0 text-zinc-400" />
             <select 
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="bg-transparent border-none outline-none w-full font-medium cursor-pointer text-sm"
+              className="bg-transparent border-none outline-none w-full font-medium cursor-pointer text-sm md:text-base py-1"
             >
               <option value="">Choose a location</option>
               <option value="Airport">Guwahati Airport</option>
@@ -99,41 +99,37 @@ export default function Home() {
             </select>
           </div>
           
-          <div className="w-px h-8 bg-zinc-200 hidden md:block"></div>
-
-          <div className="flex items-center gap-3 px-6 flex-1 text-zinc-600">
-            <Calendar className="w-5 h-5 text-zinc-400" />
+          <div className="flex items-center gap-3 px-2 md:px-6 flex-1 text-zinc-600 w-full border-b md:border-b-0 md:border-r border-zinc-100 pb-3 md:pb-0">
+            <Calendar className="w-5 h-5 shrink-0 text-zinc-400" />
             <div className="flex flex-col w-full">
-              <span className="text-xs text-zinc-400 uppercase font-semibold">Pick-up date</span>
+              <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mb-0.5">Pick-up Date</span>
               <input 
                 type="date" 
                 value={pickupDate}
                 min={minDate}
                 onChange={(e) => setPickupDate(e.target.value)}
-                className="bg-transparent border-none outline-none w-full font-medium text-sm text-zinc-800" 
+                className="bg-transparent border-none outline-none font-medium text-sm md:text-base text-zinc-800 w-full py-1 cursor-pointer" 
               />
             </div>
           </div>
 
-          <div className="w-px h-8 bg-zinc-200 hidden md:block"></div>
-
-          <div className="flex items-center gap-3 px-6 flex-1 text-zinc-600">
-            <Calendar className="w-5 h-5 text-zinc-400" />
+          <div className="flex items-center gap-3 px-2 md:px-6 flex-1 text-zinc-600 w-full pb-3 md:pb-0">
+            <Calendar className="w-5 h-5 shrink-0 text-zinc-400" />
             <div className="flex flex-col w-full">
-              <span className="text-xs text-zinc-400 uppercase font-semibold">Return date</span>
+              <span className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mb-0.5">Return Date</span>
               <input 
                 type="date" 
                 value={returnDate}
                 min={pickupDate || minDate}
                 onChange={(e) => setReturnDate(e.target.value)}
-                className="bg-transparent border-none outline-none w-full font-medium text-sm text-zinc-800" 
+                className="bg-transparent border-none outline-none font-medium text-sm md:text-base text-zinc-800 w-full py-1 cursor-pointer" 
               />
             </div>
           </div>
 
           <button 
             onClick={handleSearch}
-            className="bg-gradient-to-r from-yellow-400 to-primary text-white font-bold py-4 px-12 rounded-full hover:shadow-lg hover:shadow-primary/30 transition-all ml-auto w-full md:w-auto"
+            className="bg-primary text-white md:w-32 py-4 md:py-0 md:h-14 rounded-2xl md:rounded-full font-bold hover:bg-orange-600 transition-colors shrink-0 mt-2 md:mt-0"
           >
             Search
           </button>
